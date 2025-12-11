@@ -1,0 +1,138 @@
+/* Fonte estilo Apple */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif !important;
+}
+
+/* Fundo geral */
+body {
+    background: radial-gradient(circle at top center, #0a0a0a, #000);
+    color: #fff;
+    overflow-x: hidden;
+}
+
+/* Gradiente animado atrás de tudo */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(
+        from 0deg,
+        #04f4d4,
+        #0ff,
+        #08b8ff,
+        #04f4d4
+    );
+    animation: rotateGradient 20s linear infinite;
+    opacity: 0.08;
+    filter: blur(180px);
+    z-index: -1;
+}
+
+@keyframes rotateGradient {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* ----- HERO ----- */
+
+.hero {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* spotlight gigante atrás do texto */
+.hero::before {
+    content: "";
+    position: absolute;
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, #04f4d4 0%, transparent 60%);
+    opacity: 0.15;
+    filter: blur(120px);
+    animation: spotlightMove 12s ease-in-out infinite alternate;
+}
+
+@keyframes spotlightMove {
+    0% { transform: translate(-200px, -200px); }
+    100% { transform: translate(200px, 200px); }
+}
+
+/* Título com brilho Apple */
+.hero-title {
+    font-size: 4rem;
+    font-weight: 800;
+    opacity: 0;
+    transform: translateY(60px);
+    animation: titleReveal 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards,
+               shine 5s linear infinite;
+    letter-spacing: -1px;
+    background: linear-gradient(90deg, #fff, #04f4d4, #fff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 300%;
+    animation-delay: .15s;
+}
+
+@keyframes titleReveal {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes shine {
+    0% { background-position: 0%; }
+    100% { background-position: 300%; }
+}
+
+.hero-subtitle {
+    margin-top: 20px;
+    font-size: 1.3rem;
+    opacity: 0;
+    transform: translateY(40px);
+    animation: subtitleReveal 1.4s ease forwards;
+    animation-delay: 0.6s;
+}
+
+@keyframes subtitleReveal {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Botão Apple neon */
+.hero-btn {
+    margin-top: 40px;
+    padding: 14px 38px;
+    border: 2px solid #04f4d4;
+    background: transparent;
+    border-radius: 40px;
+    font-size: 1.1rem;
+    color: #04f4d4;
+    cursor: pointer;
+    transition: 0.3s;
+    opacity: 0;
+    animation: subtitleReveal 1.4s ease forwards;
+    animation-delay: 1.0s;
+}
+
+.hero-btn:hover {
+    background: #04f4d4;
+    color: #000;
+    box-shadow: 0 0 20px #04f4d4;
+    transform: scale(1.05);
+}
